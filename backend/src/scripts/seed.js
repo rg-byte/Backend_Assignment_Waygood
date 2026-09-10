@@ -36,6 +36,7 @@ async function seed() {
 
   const students = await Student.create(seedData.students);
 
+<<<<<<< HEAD
   const studentByEmail = students.reduce((accumulator, student) => {
     accumulator[student.email] = student;
     return accumulator;
@@ -75,6 +76,9 @@ async function seed() {
   console.log(
     `Seeded ${universities.length} universities, ${programs.length} programs, ${students.length} students, ${applicationsToCreate.length} applications.`
   );
+=======
+  // ... keep the rest of your seed logic exactly the same
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 }
 
 seed()

@@ -25,18 +25,25 @@ const studentSchema = new mongoose.Schema(
       enum: ["student", "counselor"],
       default: "student",
     },
+<<<<<<< HEAD
     targetCountries: {
       type: [String],
     },
     interestedFields: { type: [String], default: [] },
     maxBudgetUsd: { type: Number },
     preferredIntake: { type: String },
+=======
+    targetCountries:{
+      type:[String],
+    },
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
     englishTest: {
       exam: {
         type: String,
         default: "IELTS",
       },
       score: {
+<<<<<<< HEAD
         type: Number,
       },
     },
@@ -44,6 +51,20 @@ const studentSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+=======
+        type:Number,       
+      },
+    },
+    mathsTest:{
+      exam:{
+        type:String,
+        default:"IMO",
+      },
+      score:{
+        type:Number,
+      }
+    }
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
   },
   {
     timestamps: true,

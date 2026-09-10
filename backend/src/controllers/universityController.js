@@ -1,7 +1,10 @@
 ﻿import University from "../models/University.js";
 import cacheService from "../services/cacheService.js";
 import asyncHandler from "../utils/asyncHandler.js";
+<<<<<<< HEAD
 import { buildPaginatedResponse, parsePagination } from "../utils/paginate.js";
+=======
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 
 function parseBoolean(value) {
   if (value === "true") return true;
@@ -9,6 +12,7 @@ function parseBoolean(value) {
   return undefined;
 }
 
+<<<<<<< HEAD
 const SORT_OPTIONS = {
   popular: { popularScore: -1 },
   ranking: { qsRanking: 1 },
@@ -53,6 +57,44 @@ const listPopularUniversities = asyncHandler(async (req, res) => {
   cacheService.set(cacheKey, universities);
 
   res.json({ success: true, data: universities, meta: { cache: "miss" } });
+=======
+const listUniversities = asyncHandler(async (req, res) => {
+  const {
+    country,
+    partnerType,
+    q,
+    scholarshipAvailable,
+    sortBy = "popular",
+    page = 1,
+    limit = 10,
+  } = req.query;
+
+  const filters = {};
+
+  if (country) {
+    filters.country = country;
+  }
+
+  if (partnerType) {
+    filters.partnerType = partnerType;
+  }
+
+  const scholarshipFlag = parseBoolean(scholarshipAvailable);
+  if (typeof scholarshipFlag === "boolean") {
+    filters.scholarshipAvailable = scholarshipFlag;
+  }
+
+  // ... keep the rest of your existing logic
+
+  res.json({
+    success: true,
+    // data: ...
+  });
+});
+
+const listPopularUniversities = asyncHandler(async (req, res) => {
+  // keep your existing logic
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 });
 
 export { listUniversities, listPopularUniversities };

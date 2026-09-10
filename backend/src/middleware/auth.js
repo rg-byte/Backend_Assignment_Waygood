@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 ﻿import Student from "../models/Student.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import HttpError from "../utils/httpError.js";
 import { verifyAccessToken } from "../utils/jwt.utils.js";
+=======
+﻿import jwt from "jsonwebtoken";
+import env from "../config/env.js";
+import Student from "../models/Student.js";
+import asyncHandler from "../utils/asyncHandler.js";
+import HttpError from "../utils/httpError.js";
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 
 const requireAuth = asyncHandler(async (req, res, next) => {
   const authorizationHeader = req.headers.authorization;
@@ -12,6 +20,7 @@ const requireAuth = asyncHandler(async (req, res, next) => {
 
   const token = authorizationHeader.replace("Bearer ", "").trim();
 
+<<<<<<< HEAD
   let decoded;
   try {
     decoded = verifyAccessToken(token);
@@ -27,6 +36,21 @@ const requireAuth = asyncHandler(async (req, res, next) => {
 
   req.user = student;
   next();
+=======
+  try {
+    const decoded = jwt.verify(token, env.jwtSecret);
+    const student = await Student.findById(decoded.sub).select("-password");
+
+    if (!student) {
+      throw new HttpError(401, "Authenticated user no longer exists.");
+    }
+
+    req.user = student;
+    next();
+  } catch (error) {
+    throw new HttpError(401, "Invalid or expired token.");
+  }
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 });
 
 export { requireAuth };

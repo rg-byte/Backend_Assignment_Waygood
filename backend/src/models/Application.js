@@ -14,7 +14,13 @@ const applicationTimelineSchema = new mongoose.Schema(
       default: Date.now,
     },
   },
+<<<<<<< HEAD
   { _id: false }
+=======
+  {
+    _id: false,
+  }
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 );
 
 const applicationSchema = new mongoose.Schema(
@@ -37,6 +43,7 @@ const applicationSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
+<<<<<<< HEAD
     intake: {
       type: String,
       required: true,
@@ -57,6 +64,15 @@ const applicationSchema = new mongoose.Schema(
 
 applicationSchema.index({ student: 1, status: 1 });
 
+=======
+    // ... keep the rest of your schema fields exactly the same
+  },
+  {
+    timestamps: true,
+  }
+);
+
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 const Application = mongoose.model("Application", applicationSchema);
 
 export default Application;

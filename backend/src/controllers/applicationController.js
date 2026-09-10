@@ -1,16 +1,31 @@
 ﻿import Application from "../models/Application.js";
+<<<<<<< HEAD
 import Program from "../models/Program.js";
 import Student from "../models/Student.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import HttpError from "../utils/httpError.js";
 import { validStatusTransitions } from "../config/constants.js";
+=======
+import asyncHandler from "../utils/asyncHandler.js";
+import HttpError from "../utils/httpError.js";
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 
 const listApplications = asyncHandler(async (req, res) => {
   const { studentId, status } = req.query;
   const filters = {};
 
+<<<<<<< HEAD
   if (studentId) filters.student = studentId;
   if (status) filters.status = status;
+=======
+  if (studentId) {
+    filters.student = studentId;
+  }
+
+  if (status) {
+    filters.status = status;
+  }
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 
   const applications = await Application.find(filters)
     .populate("student", "fullName email role")
@@ -19,6 +34,7 @@ const listApplications = asyncHandler(async (req, res) => {
     .sort({ createdAt: -1 })
     .lean();
 
+<<<<<<< HEAD
   res.json({ success: true, data: applications });
 });
 
@@ -117,6 +133,23 @@ const updateApplicationStatus = asyncHandler(async (req, res) => {
   ]);
 
   res.json({ success: true, data: populated });
+=======
+  res.json({
+    success: true,
+    data: applications,
+  });
+});
+
+const createApplication = asyncHandler(async (req, res) => {
+  throw new HttpError(
+    501,
+    "Application creation is intentionally incomplete for the assignment."
+  );
+});
+
+const updateApplicationStatus = asyncHandler(async (req, res) => {
+  // keep the rest of your existing logic here
+>>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 });
 
 export { listApplications, createApplication, updateApplicationStatus };
