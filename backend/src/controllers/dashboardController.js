@@ -26,7 +26,6 @@ const getOverview = asyncHandler(async (req, res) => {
         { $sort: { count: -1 } },
       ]),
       Application.aggregate([
-<<<<<<< HEAD
         {
           $lookup: {
             from: "programs",
@@ -37,9 +36,6 @@ const getOverview = asyncHandler(async (req, res) => {
         },
         { $unwind: "$programDetails" },
         { $group: { _id: "$programDetails.country", count: { $sum: 1 } } },
-=======
-        { $group: { _id: "$destinationCountry", count: { $sum: 1 } } },
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
         { $sort: { count: -1 } },
         { $limit: 5 },
       ]),
@@ -48,19 +44,12 @@ const getOverview = asyncHandler(async (req, res) => {
   const payload = {
     totalStudents,
     totalPrograms,
-<<<<<<< HEAD
     totalApplications,
     statusBreakdown,
     topCountries,
   };
 
   cacheService.set(cacheKey, payload);
-=======
-    // ... keep the rest of your existing payload logic
-  };
-
-  // cacheService.set(cacheKey, payload);  // if you have this
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 
   res.json({
     success: true,

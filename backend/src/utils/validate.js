@@ -1,4 +1,3 @@
-// src/utils/validate.js
 import validator from "validator";
 import { generateAccessToken,generateRefreshToken } from "./jwt.utils.js";
 

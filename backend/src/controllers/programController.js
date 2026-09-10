@@ -1,9 +1,6 @@
 ﻿import Program from "../models/Program.js";
 import asyncHandler from "../utils/asyncHandler.js";
-<<<<<<< HEAD
 import { buildPaginatedResponse, parsePagination } from "../utils/paginate.js";
-=======
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 
 function parseBoolean(value) {
   if (value === "true") return true;
@@ -11,7 +8,6 @@ function parseBoolean(value) {
   return undefined;
 }
 
-<<<<<<< HEAD
 const SORT_OPTIONS = {
   relevance: { createdAt: -1 },
   tuitionAsc: { tuitionFeeUsd: 1 },
@@ -19,8 +15,6 @@ const SORT_OPTIONS = {
   duration: { durationMonths: 1 },
 };
 
-=======
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 const listPrograms = asyncHandler(async (req, res) => {
   const {
     country,
@@ -31,11 +25,6 @@ const listPrograms = asyncHandler(async (req, res) => {
     maxTuition,
     scholarshipAvailable,
     sortBy = "relevance",
-<<<<<<< HEAD
-=======
-    page = 1,
-    limit = 10,
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
   } = req.query;
 
   const filters = {};
@@ -49,7 +38,6 @@ const listPrograms = asyncHandler(async (req, res) => {
   }
 
   if (field) {
-<<<<<<< HEAD
     filters.field = { $regex: field, $options: "i" };
   }
 
@@ -92,17 +80,6 @@ const listPrograms = asyncHandler(async (req, res) => {
   ]);
 
   res.json(buildPaginatedResponse(programs, { page, limit, totalCount }));
-=======
-    filters.field = field;
-  }
-
-  // ... keep the rest of your existing filter + query logic
-
-  res.json({
-    success: true,
-    // data: ...
-  });
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 });
 
 export { listPrograms };

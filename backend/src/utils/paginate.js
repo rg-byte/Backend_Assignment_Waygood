@@ -1,4 +1,3 @@
-// utils/paginate.js
 export function buildPaginatedResponse(data, { page, limit, totalCount }) {
   return {
     success: true,

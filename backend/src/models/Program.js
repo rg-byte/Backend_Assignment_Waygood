@@ -36,7 +36,6 @@ const programSchema = new mongoose.Schema(
       required: true,
       enum: ["bachelor", "master", "diploma", "certificate"],
     },
-<<<<<<< HEAD
     tuitionFeeUsd: {
       type: Number,
       required: true,
@@ -60,19 +59,13 @@ const programSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-=======
-    // ... keep the rest of your schema fields exactly the same
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
   },
   {
     timestamps: true,
   }
 );
 
-<<<<<<< HEAD
 programSchema.index({ country: 1, degreeLevel: 1, tuitionFeeUsd: 1 });
-=======
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 const Program = mongoose.model("Program", programSchema);
 
 export default Program;

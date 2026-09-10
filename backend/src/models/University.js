@@ -39,10 +39,7 @@ const universitySchema = new mongoose.Schema(
   }
 );
 
-<<<<<<< HEAD
 universitySchema.index({ country: 1, scholarshipAvailable: 1 });
-=======
->>>>>>> bc0f2222228cda31971981bd3eefb333893e02bf
 const University = mongoose.model("University", universitySchema);
 
 export default University;
